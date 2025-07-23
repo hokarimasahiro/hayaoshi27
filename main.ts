@@ -2,23 +2,41 @@ function judgement () {
     if (ichia + step > goal || ichib + step > goal) {
         music.play(music.tonePlayable(880, music.beat(BeatFraction.Double)), music.PlaybackMode.InBackground)
         if (ichia == ichib) {
-            watchfont.showChar("-")
+            basic.showLeds(`
+                . . . . .
+                . # . # .
+                # # # # #
+                . # . # .
+                . . . . .
+                `)
             shuryo(colorboth)
         } else if (ichia + step >= goal) {
-            watchfont.showChar("A")
+            basic.showLeds(`
+                . . # . .
+                . # . . .
+                # # # # #
+                . # . . .
+                . . # . .
+                `)
             shuryo(colora)
         } else {
-            watchfont.showChar("B")
+            basic.showLeds(`
+                . . # . .
+                . . . # .
+                # # # # #
+                . . . # .
+                . . # . .
+                `)
             shuryo(colorb)
         }
     }
 }
 function tenmetsu () {
-    basic.pause(500)
     neoPixel.setBrightness(0)
-    neoPixel.show()
     basic.pause(500)
+    neoPixel.show()
     neoPixel.setBrightness(akarusa)
+    basic.pause(500)
     neoPixel.show()
 }
 input.onButtonPressed(Button.A, function () {
@@ -57,13 +75,20 @@ function Penalty () {
         ichib = 0
     }
 }
-function shuryo (数値: number) {
-    neoPixel.showColor(数値)
+function tenmetsuAll (color: number) {
+    neoPixel.showColor(color)
+    neoPixel.show()
+    basic.pause(500)
+    neoPixel.showColor(neopixel.colors(NeoPixelColors.Black))
+    neoPixel.show()
+    basic.pause(500)
+}
+function shuryo (color: number) {
     for (let index = 0; index < 5; index++) {
         if (mode != 1) {
             return
         }
-        tenmetsu()
+        tenmetsuAll(color)
     }
     mode = 0
     shokika()
@@ -92,6 +117,7 @@ input.onButtonPressed(Button.B, function () {
 })
 function shokika () {
     neoPixel.showColor(neopixel.colors(NeoPixelColors.Black))
+    basic.clearScreen()
     mode = 0
     ichia = startPoint
     ichib = startPoint
@@ -125,7 +151,7 @@ colorb = neopixel.colors(NeoPixelColors.Green)
 colorboth = neopixel.colors(NeoPixelColors.Yellow)
 maxStep = 1
 step = 1
-startPoint = 5
+startPoint = 8
 watchfont.showNumber(step)
 shokika()
 basic.forever(function () {
@@ -138,4 +164,6 @@ basic.forever(function () {
         Penalty()
     }
     neoDisp()
+    watchfont.plotBrightness(0, 2, (1 - p1) * 255)
+    watchfont.plotBrightness(4, 2, (1 - p2) * 255)
 })
