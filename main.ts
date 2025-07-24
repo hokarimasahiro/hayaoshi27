@@ -163,14 +163,14 @@ basic.forever(function () {
     } else if (mode == 2) {
         Penalty()
     } else {
-        if (input.runningTime() % 1000 <= 500) {
-            watchfont.showIcon(
-            "00100",
-            "01000",
-            "11111",
-            "01000",
-            "00100"
-            )
+        if (input.runningTime() % 1000 <= 100) {
+            basic.showLeds(`
+                . . # . .
+                . # . . .
+                # # # # #
+                . # . . .
+                . . # . .
+                `)
         } else {
             basic.clearScreen()
         }
