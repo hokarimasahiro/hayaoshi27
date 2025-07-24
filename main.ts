@@ -162,6 +162,18 @@ basic.forever(function () {
         judgement()
     } else if (mode == 2) {
         Penalty()
+    } else {
+        if (input.runningTime() % 1000 <= 500) {
+            basic.showLeds(`
+                . . # . .
+                . # . . .
+                # # # # #
+                . # . . .
+                . . # . .
+                `)
+        } else {
+            basic.clearScreen()
+        }
     }
     neoDisp()
     watchfont.plotBrightness(0, 2, (1 - p1) * 255)
