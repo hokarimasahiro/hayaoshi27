@@ -163,7 +163,7 @@ basic.forever(function () {
     } else if (mode == 2) {
         Penalty()
     } else {
-        if (input.runningTime() % 1000 <= 500) {
+        if (input.runningTime() % 1000 <= 100) {
             basic.showLeds(`
                 . . # . .
                 . # . . .
