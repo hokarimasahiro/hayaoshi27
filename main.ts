@@ -2,31 +2,31 @@ function judgement () {
     if (ichia + step > goal || ichib + step > goal) {
         music.play(music.tonePlayable(880, music.beat(BeatFraction.Double)), music.PlaybackMode.InBackground)
         if (ichia == ichib) {
-            basic.showLeds(`
-                . . . . .
-                . # . # .
-                # # # # #
-                . # . # .
-                . . . . .
-                `)
+            watchfont.showIcon(
+            "00000",
+            "01010",
+            "11111",
+            "01010",
+            "00000"
+            )
             shuryo(colorboth)
         } else if (ichia + step >= goal) {
-            basic.showLeds(`
-                . . # . .
-                . # . . .
-                # # # # #
-                . # . . .
-                . . # . .
-                `)
+            watchfont.showIcon(
+            "00100",
+            "01000",
+            "11111",
+            "01000",
+            "00100"
+            )
             shuryo(colora)
         } else {
-            basic.showLeds(`
-                . . # . .
-                . . . # .
-                # # # # #
-                . . . # .
-                . . # . .
-                `)
+            watchfont.showIcon(
+            "00100",
+            "00010",
+            "11111",
+            "00010",
+            "00100"
+            )
             shuryo(colorb)
         }
     }
@@ -163,14 +163,14 @@ basic.forever(function () {
     } else if (mode == 2) {
         Penalty()
     } else {
-        if (input.runningTime() % 1000 <= 100) {
-            basic.showLeds(`
-                . . # . .
-                . # . . .
-                # # # # #
-                . # . . .
-                . . # . .
-                `)
+        if (input.runningTime() % 1000 <= 500) {
+            watchfont.showIcon(
+            "00100",
+            "01000",
+            "11111",
+            "01000",
+            "00100"
+            )
         } else {
             basic.clearScreen()
         }
