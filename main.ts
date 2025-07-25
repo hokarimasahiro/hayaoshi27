@@ -144,7 +144,7 @@ pins.setPull(DigitalPin.P1, PinPullMode.PullUp)
 pins.setPull(DigitalPin.P2, PinPullMode.PullUp)
 neoPixel = neopixel.create(DigitalPin.P0, 27, NeoPixelMode.RGB)
 goal = neoPixel.length() - 1
-akarusa = 32
+akarusa = 128
 neoPixel.setBrightness(akarusa)
 colora = neopixel.colors(NeoPixelColors.Red)
 colorb = neopixel.colors(NeoPixelColors.Green)
