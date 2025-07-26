@@ -47,8 +47,8 @@ input.onButtonPressed(Button.A, function () {
         watchfont.showNumber(3 - カウンター)
         tenmetsu()
     }
-    music.play(music.tonePlayable(880, music.beat(BeatFraction.Double)), music.PlaybackMode.InBackground)
     mode = 1
+    music.play(music.tonePlayable(880, music.beat(BeatFraction.Double)), music.PlaybackMode.InBackground)
     watchfont.showNumber(0)
     basic.pause(1000)
     basic.clearScreen()
